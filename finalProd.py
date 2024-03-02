@@ -124,7 +124,7 @@ def main(session: snowpark.Session):
     print("Best Parameters (Gradient Boosting):", best_params_gb)
     print("Best Grid Search Score (Gradient Boosting):", best_score_gb)
     print("Mean Squared Error on Test Set (Gradient Boosting):", mse_gb)
-    
-    
-
+    percent_within_1 = ((abs(y_pred_gb - y_test) <= 1).sum() / len(y_test)) * 100
+    print("Percentage of predictions within +/- 1 of the actual target:", percent_within_1)
+        
     return session.create_dataframe(df)
